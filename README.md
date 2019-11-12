@@ -8,19 +8,19 @@ These modules are going to be used as a use case example for `alias` and `import
 
 ```elixir
 defmodule Curiosum.Authentication.Admin do
- defstruct [:id, :email]
+  defstruct [:id, :email]
 
- def changeset(admin, params \\ %{}) do
- # ...
- end
+  def changeset(admin, params \\ %{}) do
+    # ...
+  end
 end
 
 defmodule Curiosum.Authentication.User do
- defstruct [:id, :email]
+  defstruct [:id, :email]
 
- def changeset(user, params \\ %{}) do
- # ...
- end
+  def changeset(user, params \\ %{}) do
+    # ...
+  end
 end
 ```
 
@@ -73,11 +73,11 @@ With given macro as an example:
 
 ```elixir
 defmodule Conditional do
- defmacro custom_unless(clause, do: expression) do
- quote do
- if(!unquote(clause), do: unquote(expression))
- end
- end
+  defmacro custom_unless(clause, do: expression) do
+    quote do
+      if(!unquote(clause), do: unquote(expression))
+    end
+  end
 end
 ```
 
@@ -97,26 +97,26 @@ With a given module as an example:
 
 ```elixir
 defmodule Curiosum.Authentication.Schema do
- defmacro __using__(_opts) do
- quote do
- use Ecto.Schema
+  defmacro __using__(_opts) do
+    quote do
+      use Ecto.Schema
 
- import Ecto
- import Ecto.Changeset
- import Ecto.Query
+      import Ecto
+      import Ecto.Changeset
+      import Ecto.Query
 
- def changeset(struct, params \\ %{}) do
- # ...
- end
- end
- end
+      def changeset(struct, params \\ %{}) do
+        # ...
+      end
+    end
+  end
 end
 ```
 
 You can `use` it in the following way:
 
 ```elixir
-# injects code declared with __using__ of given module
+# injects code declared within __using__ of given module
 use Curiosum.Authentication.Schema
 
 # passes optional arguments to __using__
